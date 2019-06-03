@@ -1,7 +1,7 @@
 #include "ConnectionHandler.hpp"
 #include <iostream>
 
-ConnectionHandler::ConnectionHandler(boost::asio::io_service& io_service, std::shared_ptr<std::map<std::string, ConnectionHandler::FunctionPtr>> available_functions) : 
+ConnectionHandler::ConnectionHandler(boost::asio::io_service& io_service, std::shared_ptr<std::map<std::string, ConnectionHandler::FunctionPtr> > available_functions) : 
         socket_(io_service),
         available_functions_(available_functions) {
 }

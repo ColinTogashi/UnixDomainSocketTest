@@ -21,7 +21,7 @@ public:
     // Server(const Server&) = delete;
     // Server& operator=(const Server&) = delete;
     // ~Server();
-    std::shared_ptr<std::map<std::string, FunctionPtr>> smart_ptr_;
+    std::shared_ptr<std::map<std::string, FunctionPtr> > smart_ptr_;
     // std::map<std::string, FunctionPtr>* available_functions_;
     void AddFunction(std::string function_name, FunctionPtr ptr);
 };
@@ -43,12 +43,12 @@ void Server::AddFunction(std::string function_name, FunctionPtr ptr) {
 
 class Client {
 public:
-    Client(std::shared_ptr<std::map<std::string, FunctionPtr>> available_functions);
+    Client(std::shared_ptr<std::map<std::string, FunctionPtr> > available_functions);
     void CallFunction(std::string name);
-    std::shared_ptr<std::map<std::string, FunctionPtr>> available_functions_;
+    std::shared_ptr<std::map<std::string, FunctionPtr> > available_functions_;
 };
 
-Client::Client(std::shared_ptr<std::map<std::string, FunctionPtr>> available_functions) {
+Client::Client(std::shared_ptr<std::map<std::string, FunctionPtr> > available_functions) {
     available_functions_ = available_functions;
 }
 

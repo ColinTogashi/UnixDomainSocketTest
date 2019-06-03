@@ -20,6 +20,6 @@ private:
     boost::asio::io_service& io_service_;
     boost_local::stream_protocol::acceptor acceptor_;
     const std::string& filename_;
-    std::shared_ptr<std::map<std::string, ConnectionHandler::FunctionPtr>> available_functions_;
+    std::shared_ptr<std::map<std::string, ConnectionHandler::FunctionPtr> > available_functions_;
 
 };

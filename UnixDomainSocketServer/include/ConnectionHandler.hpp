@@ -12,7 +12,7 @@ public:
     typedef boost::shared_ptr<ConnectionHandler> ConnectionHandlerPtr;
     typedef boost::function<int (void)> FunctionPtr;
 
-    ConnectionHandler(boost::asio::io_service& io_service, std::shared_ptr<std::map<std::string, ConnectionHandler::FunctionPtr>> available_functions);
+    ConnectionHandler(boost::asio::io_service& io_service, std::shared_ptr<std::map<std::string, ConnectionHandler::FunctionPtr> > available_functions);
     boost_local::stream_protocol::socket& socket();
     void start();
     void handle_read(const boost::system::error_code& error, size_t bytes_transferred);
@@ -21,5 +21,5 @@ public:
 private:
     boost_local::stream_protocol::socket socket_;
     char data_[1024];
-    std::shared_ptr<std::map<std::string, ConnectionHandler::FunctionPtr>> available_functions_;
+    std::shared_ptr<std::map<std::string, ConnectionHandler::FunctionPtr> > available_functions_;
 };
