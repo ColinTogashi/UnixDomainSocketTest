@@ -31,6 +31,10 @@ int main(int argc, char* argv[])
     std::string request = "hello_world";
     size_t request_length = request.length();
     boost::asio::write(s, boost::asio::buffer(request, request_length));
+    char str[max_length];
+    boost::asio::read(s, boost::asio::buffer(str, max_length));
+    int reply = str[0];
+    std::cout << "Reply is: " << reply << "\n";
   }
   catch (std::exception& e)
   {

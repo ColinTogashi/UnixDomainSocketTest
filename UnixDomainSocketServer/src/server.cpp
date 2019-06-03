@@ -5,8 +5,9 @@
 // #include "ConnectionHandler.hpp"
 #include "UnixDomainSocketServer.hpp"
 
-void hello_world() {
+int hello_world() {
     std::cout << "Hello World!\n";
+    return 1;
 }
 
 int main(int argc, char* argv[])
@@ -16,10 +17,11 @@ int main(int argc, char* argv[])
   {
     ::unlink("/tmp/test"); // Remove previous binding.
     boost::asio::io_service io_service;
-    UnixDomainSocketServer server = UnixDomainSocketServer(io_service, "/tmp/test");
-    server.AddFunction("hello_world", &hello_world);
+    std::unique_ptr<UnixDomainSocketServer> server;
+    server.reset(new UnixDomainSocketServer(io_service, "/tmp/test"));
+    server->AddFunction("hello_world", &hello_world);
     
-    std::thread run_thread([&]{ io_service.run(); });
+    io_service.run();
     
     std::cout << "Crackalackin\n";
   }

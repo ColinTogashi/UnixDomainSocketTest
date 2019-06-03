@@ -10,7 +10,7 @@ class ConnectionHandler : public boost::enable_shared_from_this<ConnectionHandle
 
 public:
     typedef boost::shared_ptr<ConnectionHandler> ConnectionHandlerPtr;
-    typedef boost::function<void (void)> FunctionPtr;
+    typedef boost::function<int (void)> FunctionPtr;
 
     ConnectionHandler(boost::asio::io_service& io_service, std::shared_ptr<std::map<std::string, ConnectionHandler::FunctionPtr>> available_functions);
     boost_local::stream_protocol::socket& socket();
